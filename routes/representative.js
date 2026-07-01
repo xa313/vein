@@ -7,7 +7,6 @@ const representative = require('../controllers/representative')
 // const multer = require('multer')
 // const { storage } = require('../cloudinary/index')
 // const upload = multer({ storage })
-// const router = express.Router({ mergeParams: true })
 
 
 router.get('/representative', representative.getHomeRepresentative)

@@ -1,6 +1,5 @@
 const Patient = require('../models/patient')
 const Doctor = require('../models/doctor')
-const doctor = require('../models/doctor')
 
 
 module.exports.getHome = async (req, res) => {

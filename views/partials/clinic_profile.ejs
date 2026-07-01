@@ -4,40 +4,42 @@
         style="background: linear-gradient(135deg, #198754 0%, #146c43 100%);">
 
         <div id="display-clinic-name" class="cursor-pointer inline-hover rounded p-2 d-inline-block mb-2"
-            onclick="toggleInlineEdit('clinic-name')" title="Click to edit Clinic Name">
-            <h2 class="fw-bold mb-0 text-truncate">
+            onclick="toggleInlineEdit('clinic-name')" title="Click to edit">
+            <h2 class="fw-bold mb-0">
                 <i class="bi bi-hospital"></i>
                 <%= clinic.name %> <i class="bi bi-pencil-fill fs-6 ms-2 opacity-50"></i>
             </h2>
         </div>
-        <form id="edit-clinic-name" class="d-none justify-content-center align-items-center gap-2 mb-3"
-            action="/clinic/<%= id %>?_method=PUT" method="POST" onclick="event.stopPropagation()"
-            onsubmit="return confirm('Update Clinic Name to:\n' + this.elements['clinic[name]'].value)">
-            <input type="text" class="form-control w-auto text-center fw-bold" name="clinic[name]"
+
+        <form id="edit-clinic-name" class="d-none flex-column align-items-center gap-2 mb-3"
+            action="/clinic/<%= id %>?_method=PUT" method="POST" onclick="event.stopPropagation()">
+            <input type="text" class="form-control text-center fw-bold w-75" name="clinic[name]"
                 value="<%= clinic.name %>" required autofocus>
-            <button type="submit" class="btn btn-light text-success btn-sm fw-bold"><i
-                    class="bi bi-check-lg"></i></button>
-            <button type="button" class="btn btn-outline-light btn-sm fw-bold"
-                onclick="toggleInlineEdit('clinic-name')"><i class="bi bi-x-lg"></i></button>
+            <div class="d-flex gap-2">
+                <button type="submit" class="btn btn-light text-success btn-sm px-3 fw-bold">Save</button>
+                <button type="button" class="btn btn-outline-light btn-sm px-3 fw-bold"
+                    onclick="toggleInlineEdit('clinic-name')">Cancel</button>
+            </div>
         </form>
 
         <div class="w-100"></div>
 
         <div id="display-doc-name" class="cursor-pointer inline-hover rounded p-1 d-inline-block"
-            onclick="toggleInlineEdit('doc-name')" title="Click to edit Doctor Name">
+            onclick="toggleInlineEdit('doc-name')" title="Click to edit">
             <span class="badge bg-white text-success rounded-pill px-3 py-2 fs-6 shadow-sm">
                 Dr. <%= clinic.doctor.name %> <i class="bi bi-pencil-fill ms-1 opacity-50"></i>
             </span>
         </div>
-        <form id="edit-doc-name" class="d-none justify-content-center align-items-center gap-2"
-            action="/clinic/<%= id %>?_method=PUT" method="POST" onclick="event.stopPropagation()"
-            onsubmit="return confirm('Update Doctor Name to:\n' + this.elements['doctor[name]'].value)">
-            <input type="text" class="form-control w-auto text-center" name="doctor[name]"
+
+        <form id="edit-doc-name" class="d-none flex-column align-items-center gap-2"
+            action="/clinic/<%= id %>?_method=PUT" method="POST" onclick="event.stopPropagation()">
+            <input type="text" class="form-control text-center w-75" name="doctor[name]"
                 value="<%= clinic.doctor.name %>" required autofocus>
-            <button type="submit" class="btn btn-light text-success btn-sm fw-bold"><i
-                    class="bi bi-check-lg"></i></button>
-            <button type="button" class="btn btn-outline-light btn-sm fw-bold" onclick="toggleInlineEdit('doc-name')"><i
-                    class="bi bi-x-lg"></i></button>
+            <div class="d-flex gap-2 mt-2">
+                <button type="submit" class="btn btn-light text-success btn-sm px-3 fw-bold">Save</button>
+                <button type="button" class="btn btn-outline-light btn-sm px-3 fw-bold"
+                    onclick="toggleInlineEdit('doc-name')">Cancel</button>
+            </div>
         </form>
     </div>
 

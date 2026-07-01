@@ -51,15 +51,6 @@ module.exports.getSecretary = async (req, res) => {
     res.render('doctor/secretary', { secretary })
 }
 
-module.exports.getSecretaryEdit = async (req, res) => {
-    const { secretaryId } = req.params
-    const secretary = await Secretary.findById(secretaryId).populate('clinic').populate('doctor')
-    if (!secretary) {
-        return res.status(404).send('Secretary not found')
-    }
-    res.render('doctor/secretaryEdit', { secretary })
-}
-
 
 module.exports.putSecretary = async (req, res) => {
     const { id } = req.params
