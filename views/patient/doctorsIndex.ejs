@@ -1,0 +1,86 @@
+<% layout('layouts/patient_boilerplate') %>
+
+<div class="container mt-5 mb-5">
+    
+    <div class="text-center mb-5 bg-white p-5 rounded-4 shadow-sm border-bottom border-primary border-4">
+        <h1 class="fw-bold text-primary mb-3" style="color: #003366 !important;">
+            <i class="bi bi-heart-pulse"></i> Our Expert Specialists
+        </h1>
+        <p class="text-muted fs-5 mb-4">Your health is in the hands of the best medical professionals. Find your doctor below.</p>
+        <a href="/patient/home" class="btn btn-outline-primary rounded-pill px-4 fw-bold">
+            <i class="bi bi-arrow-left"></i> Back to Dashboard
+        </a>
+    </div>
+
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        <% for(let doctor of doctors) { %>
+            <div class="col">
+                <div class="card patient-card h-100 shadow-sm border-0 position-relative overflow-hidden">
+                    <div class="card-top-bar"></div>
+                    
+                    <div class="card-body d-flex flex-column align-items-center text-center p-4">
+                        <div class="doctor-avatar mb-3">
+                            <i class="bi bi-person-badge fs-1 text-primary"></i>
+                        </div>
+                        
+                        <h4 class="card-title fw-bold text-dark mb-1">
+                            Dr. <%= doctor.name %>
+                        </h4>
+                        
+                        <p class="card-text text-primary fw-semibold mb-4 bg-light px-3 py-1 rounded-pill mt-2">
+                            <%= doctor.specialization.join(' • ') %>
+                        </p>
+                        
+                        <div class="mt-auto w-100">
+                            <a href="/patient/doctor/<%=doctor._id %>" class="btn btn-primary w-100 rounded-pill btn-detail fw-bold py-2">
+                                View Profile <i class="bi bi-arrow-right-short fs-5 align-middle"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <% } %>
+    </div>
+</div>
+
+<style>
+    body { background-color: #f0f4f8; /* لون خلفية مريح للعين */ }
+    
+    .card-top-bar {
+        height: 6px;
+        width: 100%;
+        background: linear-gradient(90deg, #0a58ca, #0d6efd, #6ea8fe);
+    }
+    
+    .doctor-avatar {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        background-color: #e0f3ff; /* أزرق وريدي فاتح جداً */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .patient-card {
+        border-radius: 1.2rem;
+        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        background: #ffffff;
+    }
+
+    .patient-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 15px 30px rgba(13, 110, 253, 0.15) !important; /* ظل أزرق خفيف */
+    }
+
+    .btn-detail {
+        background-color: #0d6efd;
+        border: none;
+        transition: all 0.3s ease;
+    }
+
+    .btn-detail:hover {
+        background-color: #003366; /* أزرق داكن */
+        box-shadow: 0 5px 15px rgba(13, 110, 253, 0.3);
+    }
+</style>

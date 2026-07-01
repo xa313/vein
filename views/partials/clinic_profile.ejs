@@ -1,0 +1,256 @@
+<div class="card profile-card shadow-lg border-0 overflow-hidden mb-4">
+
+    <div class="profile-header text-white text-center py-4 px-3 position-relative"
+        style="background: linear-gradient(135deg, #198754 0%, #146c43 100%);">
+
+        <div id="display-clinic-name" class="cursor-pointer inline-hover rounded p-2 d-inline-block mb-2"
+            onclick="toggleInlineEdit('clinic-name')" title="Click to edit Clinic Name">
+            <h2 class="fw-bold mb-0 text-truncate">
+                <i class="bi bi-hospital"></i>
+                <%= clinic.name %> <i class="bi bi-pencil-fill fs-6 ms-2 opacity-50"></i>
+            </h2>
+        </div>
+        <form id="edit-clinic-name" class="d-none justify-content-center align-items-center gap-2 mb-3"
+            action="/clinic/<%= id %>?_method=PUT" method="POST" onclick="event.stopPropagation()"
+            onsubmit="return confirm('Update Clinic Name to:\n' + this.elements['clinic[name]'].value)">
+            <input type="text" class="form-control w-auto text-center fw-bold" name="clinic[name]"
+                value="<%= clinic.name %>" required autofocus>
+            <button type="submit" class="btn btn-light text-success btn-sm fw-bold"><i
+                    class="bi bi-check-lg"></i></button>
+            <button type="button" class="btn btn-outline-light btn-sm fw-bold"
+                onclick="toggleInlineEdit('clinic-name')"><i class="bi bi-x-lg"></i></button>
+        </form>
+
+        <div class="w-100"></div>
+
+        <div id="display-doc-name" class="cursor-pointer inline-hover rounded p-1 d-inline-block"
+            onclick="toggleInlineEdit('doc-name')" title="Click to edit Doctor Name">
+            <span class="badge bg-white text-success rounded-pill px-3 py-2 fs-6 shadow-sm">
+                Dr. <%= clinic.doctor.name %> <i class="bi bi-pencil-fill ms-1 opacity-50"></i>
+            </span>
+        </div>
+        <form id="edit-doc-name" class="d-none justify-content-center align-items-center gap-2"
+            action="/clinic/<%= id %>?_method=PUT" method="POST" onclick="event.stopPropagation()"
+            onsubmit="return confirm('Update Doctor Name to:\n' + this.elements['doctor[name]'].value)">
+            <input type="text" class="form-control w-auto text-center" name="doctor[name]"
+                value="<%= clinic.doctor.name %>" required autofocus>
+            <button type="submit" class="btn btn-light text-success btn-sm fw-bold"><i
+                    class="bi bi-check-lg"></i></button>
+            <button type="button" class="btn btn-outline-light btn-sm fw-bold" onclick="toggleInlineEdit('doc-name')"><i
+                    class="bi bi-x-lg"></i></button>
+        </form>
+    </div>
+
+    <div class="card-body p-4 p-md-5 bg-white">
+
+        <h5 class="fw-bold text-success mb-3 border-bottom pb-2"><i class="bi bi-person-badge"></i> Doctor Information
+        </h5>
+        <div class="row g-4 mb-5">
+
+            <div class="col-md-6">
+                <div class="p-3 bg-light rounded-3 h-100 position-relative cursor-pointer field-hover"
+                    onclick="toggleInlineEdit('doc-spec')" title="Click to edit Specialization">
+                    <small
+                        class="text-muted d-block mb-1 text-uppercase fw-semibold tracking-wider">Specialization</small>
+                    <div id="display-doc-spec">
+                        <span class="fs-5 fw-bold text-dark">
+                            <%= clinic.doctor.specialization %>
+                        </span>
+                        <i class="bi bi-pencil-square position-absolute top-0 end-0 m-3 text-secondary opacity-50"></i>
+                    </div>
+                    <form id="edit-doc-spec" class="d-none mt-2" action="/clinic/<%= id %>?_method=PUT" method="POST"
+                        onclick="event.stopPropagation()">
+                        <input type="text" class="form-control mb-2 text-center" name="doctor[specialization]"
+                            value="<%= clinic.doctor.specialization %>" required autofocus>
+                        <div class="d-flex gap-2">
+                            <button type="submit" class="btn btn-success btn-sm flex-grow-1"><i
+                                    class="bi bi-check-lg"></i> Save</button>
+                            <button type="button" class="btn btn-secondary btn-sm flex-grow-1"
+                                onclick="toggleInlineEdit('doc-spec')">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="p-3 bg-light rounded-3 h-100 position-relative cursor-pointer field-hover"
+                    onclick="toggleInlineEdit('doc-phone')" title="Click to edit Doctor Phone">
+                    <small class="text-muted d-block mb-1 text-uppercase fw-semibold tracking-wider">Doctor
+                        Phone</small>
+                    <div id="display-doc-phone">
+                        <span class="fs-5 fw-bold text-dark font-monospace" dir="ltr">
+                            <%= clinic.doctor.phone %>
+                        </span>
+                        <i class="bi bi-pencil-square position-absolute top-0 end-0 m-3 text-secondary opacity-50"></i>
+                    </div>
+                    <form id="edit-doc-phone" class="d-none mt-2" action="/clinic/<%= id %>?_method=PUT" method="POST"
+                        onclick="event.stopPropagation()">
+                        <input type="text" dir="ltr" class="form-control mb-2 text-center font-monospace"
+                            name="doctor[phone]" value="<%= clinic.doctor.phone %>" pattern="^\+?[0-9]+$"
+                            oninput="this.value = this.value.replace(/[^0-9+]/g, '').replace(/(?!^)\+/g, '');" required
+                            autofocus>
+                        <div class="d-flex gap-2">
+                            <button type="submit" class="btn btn-success btn-sm flex-grow-1"><i
+                                    class="bi bi-check-lg"></i> Save</button>
+                            <button type="button" class="btn btn-secondary btn-sm flex-grow-1"
+                                onclick="toggleInlineEdit('doc-phone')">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <h5 class="fw-bold text-success mb-3 border-bottom pb-2"><i class="bi bi-building"></i> Clinic Details</h5>
+        <div class="row g-4 mb-4">
+
+            <div class="col-md-6">
+                <div class="p-3 bg-light rounded-3 h-100 position-relative cursor-pointer field-hover"
+                    onclick="toggleInlineEdit('clin-phone')" title="Click to edit Clinic Phone">
+                    <small class="text-muted d-block mb-1 text-uppercase fw-semibold tracking-wider">Clinic
+                        Phone</small>
+                    <div id="display-clin-phone">
+                        <span class="fs-5 fw-bold text-dark font-monospace" dir="ltr">
+                            <%= clinic.phone %>
+                        </span>
+                        <i class="bi bi-pencil-square position-absolute top-0 end-0 m-3 text-secondary opacity-50"></i>
+                    </div>
+                    <form id="edit-clin-phone" class="d-none mt-2" action="/clinic/<%= id %>?_method=PUT" method="POST"
+                        onclick="event.stopPropagation()">
+                        <input type="text" dir="ltr" class="form-control mb-2 text-center font-monospace"
+                            name="clinic[phone]" value="<%= clinic.phone %>" pattern="^\+?[0-9]+$"
+                            oninput="this.value = this.value.replace(/[^0-9+]/g, '').replace(/(?!^)\+/g, '');" required
+                            autofocus>
+                        <div class="d-flex gap-2">
+                            <button type="submit" class="btn btn-success btn-sm flex-grow-1"><i
+                                    class="bi bi-check-lg"></i> Save</button>
+                            <button type="button" class="btn btn-secondary btn-sm flex-grow-1"
+                                onclick="toggleInlineEdit('clin-phone')">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="p-3 bg-light rounded-3 h-100 position-relative cursor-pointer field-hover"
+                    onclick="toggleInlineEdit('clin-loc')" title="Click to edit Location">
+                    <small class="text-muted d-block mb-1 text-uppercase fw-semibold tracking-wider">Location
+                        (Title)</small>
+                    <div id="display-clin-loc">
+                        <span class="fs-6 fw-bold text-dark">
+                            <%= clinic.location %>
+                        </span>
+                        <i class="bi bi-pencil-square position-absolute top-0 end-0 m-3 text-secondary opacity-50"></i>
+                    </div>
+                    <form id="edit-clin-loc" class="d-none mt-2" action="/clinic/<%= id %>?_method=PUT" method="POST"
+                        onclick="event.stopPropagation()">
+                        <input type="text" class="form-control mb-2 text-center" name="clinic[location]"
+                            value="<%= clinic.location %>" required autofocus>
+                        <div class="d-flex gap-2">
+                            <button type="submit" class="btn btn-success btn-sm flex-grow-1"><i
+                                    class="bi bi-check-lg"></i> Save</button>
+                            <button type="button" class="btn btn-secondary btn-sm flex-grow-1"
+                                onclick="toggleInlineEdit('clin-loc')">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="col-12">
+                <div class="p-3 bg-light rounded-3 position-relative cursor-pointer field-hover"
+                    onclick="toggleInlineEdit('clin-map')" title="Click to edit Google Map URL">
+                    <small class="text-muted d-block mb-1 text-uppercase fw-semibold tracking-wider">Google Maps
+                        URL</small>
+                    <div id="display-clin-map" class="text-truncate">
+                        <a href="<%= clinic.googleMap %>" target="_blank" class="text-primary text-decoration-none"
+                            onclick="event.stopPropagation()">
+                            <i class="bi bi-geo-alt-fill"></i>
+                            <%= clinic.googleMap %>
+                        </a>
+                        <i class="bi bi-pencil-square position-absolute top-0 end-0 m-3 text-secondary opacity-50"></i>
+                    </div>
+                    <form id="edit-clin-map" class="d-none mt-2" action="/clinic/<%= id %>?_method=PUT" method="POST"
+                        onclick="event.stopPropagation()">
+                        <input type="url" class="form-control mb-2" name="clinic[googleMap]"
+                            value="<%= clinic.googleMap %>" required autofocus>
+                        <div class="d-flex gap-2 justify-content-end">
+                            <button type="submit" class="btn btn-success btn-sm px-4"><i class="bi bi-check-lg"></i>
+                                Save URL</button>
+                            <button type="button" class="btn btn-secondary btn-sm px-4"
+                                onclick="toggleInlineEdit('clin-map')">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="col-12">
+                <div class="p-3 bg-light rounded-3 position-relative cursor-pointer field-hover"
+                    onclick="toggleInlineEdit('clin-desc')" title="Click to edit Description">
+                    <small class="text-muted d-block mb-1 text-uppercase fw-semibold tracking-wider">Clinic
+                        Description</small>
+                    <div id="display-clin-desc">
+                        <p class="mb-0 text-dark" style="white-space: pre-line;">
+                            <%= clinic.description %>
+                        </p>
+                        <i class="bi bi-pencil-square position-absolute top-0 end-0 m-3 text-secondary opacity-50"></i>
+                    </div>
+                    <form id="edit-clin-desc" class="d-none mt-2" action="/clinic/<%= id %>?_method=PUT" method="POST"
+                        onclick="event.stopPropagation()">
+                        <textarea class="form-control mb-2" name="clinic[description]" rows="3" required
+                            autofocus><%= clinic.description %></textarea>
+                        <div class="d-flex gap-2 justify-content-end">
+                            <button type="submit" class="btn btn-success btn-sm px-4"><i class="bi bi-check-lg"></i>
+                                Save Description</button>
+                            <button type="button" class="btn btn-secondary btn-sm px-4"
+                                onclick="toggleInlineEdit('clin-desc')">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+    function toggleInlineEdit(field) {
+        const displayDiv = document.getElementById(`display-${field}`);
+        const editForm = document.getElementById(`edit-${field}`);
+
+        // إغلاق أي فورم مفتوح آخر (اختياري لتحسين التجربة)
+        document.querySelectorAll('form[id^="edit-"]:not(.d-none)').forEach(form => {
+            if (form.id !== `edit-${field}`) {
+                form.classList.add('d-none');
+                document.getElementById(`display-${form.id.replace('edit-', '')}`).classList.remove('d-none');
+            }
+        });
+
+        displayDiv.classList.toggle('d-none');
+        editForm.classList.toggle('d-none');
+    }
+</script>
+
+<style>
+    .profile-card {
+        border-radius: 1.5rem;
+    }
+
+    .cursor-pointer {
+        cursor: pointer;
+    }
+
+    .inline-hover:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+        transition: 0.3s;
+    }
+
+    .field-hover:hover {
+        background-color: #e9ecef !important;
+        transition: 0.3s;
+        box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .tracking-wider {
+        letter-spacing: 0.5px;
+        font-size: 0.75rem;
+    }
+</style>

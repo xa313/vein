@@ -1,4 +1,6 @@
 const Patient = require('../models/patient')
+const Doctor = require('../models/doctor')
+const doctor = require('../models/doctor')
 
 
 module.exports.getHome = async (req, res) => {
@@ -8,6 +10,17 @@ module.exports.getHome = async (req, res) => {
 
 module.exports.getNewPatient = (req, res) => {
     res.render('patient/new')
+}
+
+module.exports.getDoctors = async (req, res) => {
+    const doctors = await Doctor.find({})
+    res.render('patient/doctorsIndex', { doctors })
+}
+
+module.exports.getDoctor = async (req, res) => {
+    const { id } = req.params
+    const doctor = await Doctor.findById(id).populate('clinics')
+    res.render('patient/doctor', { doctor })
 }
 
 

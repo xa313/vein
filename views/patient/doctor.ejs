@@ -1,0 +1,128 @@
+<% layout('layouts/patient_boilerplate') %>
+
+    <div class="container mt-5 mb-5">
+
+        <div class="mb-4">
+            <a href="/patient/doctors" class="text-decoration-none text-muted inline-hover">
+                <i class="bi bi-arrow-left"></i> Back to Doctors List
+            </a>
+        </div>
+
+        <div class="card border-0 shadow-lg mb-5 overflow-hidden rounded-4">
+            <div class="card-body p-0">
+                <div class="row g-0">
+                    <div
+                        class="col-md-3 bg-primary bg-gradient d-flex flex-column justify-content-center align-items-center text-white p-5">
+                        <i class="bi bi-person-hearts" style="font-size: 5rem;"></i>
+                    </div>
+                    <div class="col-md-9 p-5 d-flex flex-column justify-content-center">
+                        <h2 class="fw-bold mb-2" style="color: #003366;">Dr. <%= doctor.name %>
+                        </h2>
+                        <h5 class="text-primary fw-semibold mb-0">
+                            <i class="bi bi-award me-1"></i>
+                            <%= doctor.specialization.join(' • ') %>
+                    </h5>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h3 class="fw-bold mb-4 text-dark"><i class="bi bi-buildings text-primary"></i> Available Clinics</h3>
+    
+    <% if (doctor.clinics && doctor.clinics.length > 0) { %>
+        <div class="row row-cols-1 row-cols-lg-2 g-4">
+            <% for(let clinic of doctor.clinics) { %>
+                <div class="col">
+                    <div class="card h-100 border-0 shadow-sm rounded-4 clinic-card">
+                        <div class="card-body p-4 p-md-5">
+                            
+                            <h4 class="fw-bold text-primary mb-3">
+                                <i class="bi bi-hospital me-2"></i><%= clinic.name %>
+                            </h4>
+                            
+                            <p class="text-muted mb-4 pb-3 border-bottom" style="white-space: pre-line;">
+                                <%= clinic.description %>
+                            </p>
+                            
+                            <div class="d-flex flex-column gap-3 mb-4">
+                                <div class="d-flex align-items-center text-dark">
+                                    <div class="icon-box bg-light text-primary me-3">
+                                        <i class="bi bi-telephone-fill"></i>
+                                    </div>
+                                    <div>
+                                        <small class="text-muted d-block lh-1">Phone Number</small>
+                                        <span class="fw-bold font-monospace fs-5" dir="ltr"><%= clinic.phone %></span>
+                                    </div>
+                                </div>
+
+                                <div class="d-flex align-items-center text-dark">
+                                    <div class="icon-box bg-light text-primary me-3">
+                                        <i class="bi bi-geo-alt-fill"></i>
+                                    </div>
+                                    <div>
+                                        <small class="text-muted d-block lh-1">Location</small>
+                                        <span class="fw-semibold"><%= clinic.location %></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-auto">
+                                <a href="<%= clinic.googleMap %>" target="_blank" class="btn btn-outline-primary w-100 rounded-pill py-2 fw-bold d-flex justify-content-center align-items-center gap-2 map-btn">
+                                    <i class="bi bi-map"></i> Open in Google Maps
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            <% } %>
+        </div>
+    <% } else { %>
+        <div class="alert alert-info border-0 shadow-sm rounded-4 text-center p-4">
+            <i class="bi bi-info-circle fs-4 d-block mb-2"></i>
+            Currently, there are no clinic details available for this doctor.
+        </div>
+    <% } %>
+
+</div>
+
+<style>
+    body { background-color: #f0f4f8; }
+    
+    .inline-hover { transition: 0.2s; }
+    .inline-hover:hover { color: #0d6efd !important; letter-spacing: 0.5px; }
+
+    .bg-gradient {
+        background: linear-gradient(135deg, #0d6efd 0%, #003366 100%) !important;
+    }
+
+    .icon-box {
+        width: 45px;
+        height: 45px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+    }
+
+    .clinic-card {
+        border-left: 5px solid #0d6efd !important;
+        transition: transform 0.3s ease;
+    }
+
+    .clinic-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .map-btn {
+        transition: all 0.3s ease;
+        border-width: 2px;
+    }
+    
+    .map-btn:hover {
+        background-color: #0d6efd;
+        color: white;
+        box-shadow: 0 4px 12px rgba(13, 110, 253, 0.2);
+    }
+</style>

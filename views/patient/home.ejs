@@ -4,70 +4,142 @@
         style="min-height: 70vh;">
 
         <div class="mb-5 animate-fade-in">
-            
-            <h1 class="fw-bold text-dark display-5 mb-2">Patient Dashboard</h1>
+            <div class="main-icon shadow-sm mx-auto mb-4 text-primary" style="background: #e0f3ff; border: none;">
+                <i class="bi bi-house-door-fill" style="font-size: 2.5rem;"></i>
+            </div>
+            <h1 class="fw-bold text-dark display-5 mb-2" style="color: #003366 !important;">Patient Dashboard</h1>
             <p class="text-muted fs-5">Welcome back! Please choose an action from the options below.</p>
         </div>
 
-        <div class="w-100 d-flex flex-column gap-3 justify-content-center align-items-center">
+        <div class="w-100 d-flex flex-column gap-3 justify-content-center align-items-center animate-fade-in-up">
 
-            <div class="col-10 col-sm-8 col-md-6 col-lg-5">
+            <div class="col-11 col-sm-8 col-md-6 col-lg-4">
                 <a href="/patient/new"
-                    class="custom-btn btn btn-primary btn-lg rounded-pill shadow px-4 py-3 d-flex align-items-center justify-content-center gap-3">
-                    <i class="bi bi-person-plus-fill fs-4"></i>
-                    <span class="fw-semibold">Make an account?</span>
+                    class="custom-btn btn btn-primary btn-lg rounded-pill shadow-sm px-4 py-3 w-100 d-flex align-items-center justify-content-start gap-3">
+                    <div class="icon-wrapper bg-white text-primary rounded-circle d-flex align-items-center justify-content-center shadow-sm"
+                        style="width: 45px; height: 45px;">
+                        <i class="bi bi-person-plus-fill fs-5"></i>
+                    </div>
+                    <span class="fw-bold text-start flex-grow-1">Make an account?</span>
+                </a>
+            </div>
+
+            <div class="col-11 col-sm-8 col-md-6 col-lg-4">
+                <a href="/patient/<%= patient._id %>"
+                    class="custom-btn btn btn-outline-primary bg-white btn-lg rounded-pill shadow-sm px-4 py-3 w-100 d-flex align-items-center justify-content-start gap-3">
+                    <div class="icon-wrapper text-white rounded-circle d-flex align-items-center justify-content-center shadow-sm"
+                        style="width: 45px; height: 45px; background-color: #0d6efd;">
+                        <i class="bi bi-person-badge-fill fs-5"></i>
+                    </div>
+                    <span class="fw-bold text-start flex-grow-1">My Account</span>
+                </a>
+            </div>
+
+            <div class="col-11 col-sm-8 col-md-6 col-lg-4">
+                <a href="/patient/doctors"
+                    class="custom-btn btn btn-outline-primary bg-white btn-lg rounded-pill shadow-sm px-4 py-3 w-100 d-flex align-items-center justify-content-start gap-3">
+                    <div class="icon-wrapper text-white rounded-circle d-flex align-items-center justify-content-center shadow-sm"
+                        style="width: 45px; height: 45px; background-color: #0d6efd;">
+                        <i class="bi bi-search-heart-fill fs-5"></i>
+                    </div>
+                    <span class="fw-bold text-start flex-grow-1">Explore Doctors</span>
+                </a>
+            </div>
+
+            <div class="col-11 col-sm-8 col-md-6 col-lg-4">
+                <a href="/"
+                    class="custom-btn btn btn-outline-primary bg-white btn-lg rounded-pill shadow-sm px-4 py-3 w-100 d-flex align-items-center justify-content-start gap-3">
+                    <div class="icon-wrapper text-white rounded-circle d-flex align-items-center justify-content-center shadow-sm"
+                        style="width: 45px; height: 45px; background-color: #0d6efd;">
+                        <i class="bi bi-calendar-check-fill fs-5"></i>
+                    </div>
+                    <span class="fw-bold text-start flex-grow-1">My Appointments</span>
                 </a>
             </div>
 
         </div>
-        <a href="http:/patient/<%=patient._id %>">my account</a>
     </div>
 
     <style>
         body {
-            background-color: #f8f9fa;
+            background-color: #f0f4f8;
+            /* خلفية متناسقة مع صفحة الأطباء */
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         .main-icon {
             width: 90px;
             height: 90px;
-            background-color: #ffffff;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            border: 1px solid #e9ecef;
         }
 
         .custom-btn {
             transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
             border-width: 2px;
+            border-color: #0d6efd;
         }
 
-        /* Primary Button Hover */
+        /* تأثيرات الزر الأساسي (Primary) */
+        .btn-primary.custom-btn {
+            background: linear-gradient(135deg, #0d6efd 0%, #0a58ca 100%);
+            border: none;
+        }
+
         .btn-primary.custom-btn:hover {
-            transform: translateY(-3px);
+            transform: translateY(-5px);
             box-shadow: 0 10px 20px rgba(13, 110, 253, 0.3) !important;
+            background: linear-gradient(135deg, #0a58ca 0%, #003366 100%);
         }
 
-        /* Outline Button Hover */
+        /* تأثيرات الأزرار المجوفة (Outline) */
+        .btn-outline-primary.custom-btn {
+            color: #003366;
+        }
+
         .btn-outline-primary.custom-btn:hover {
-            transform: translateY(-3px);
+            transform: translateY(-5px);
             box-shadow: 0 10px 20px rgba(13, 110, 253, 0.15) !important;
-            background-color: #0d6efd;
-            color: #ffffff;
+            background-color: #0d6efd !important;
+            color: #ffffff !important;
+            border-color: #0d6efd;
         }
 
-        /* Simple Fade-in Animation */
+        /* تحويل الأيقونات للون المناسب عند الـ Hover للأزرار المجوفة */
+        .btn-outline-primary.custom-btn:hover .icon-wrapper {
+            background-color: #ffffff !important;
+            color: #0d6efd !important;
+            transition: 0.3s;
+        }
+
+        /* حركات الظهور (Animations) */
         .animate-fade-in {
             animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        .animate-fade-in-up {
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out 0.2s forwards;
         }
 
         @keyframes fadeIn {
             from {
                 opacity: 0;
                 transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
             }
 
             to {

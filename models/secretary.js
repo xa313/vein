@@ -5,7 +5,11 @@ const Clinic = require('./clinic')
 
 const secretarySchema = new Schema({
     name: String,
-    phone: Number,
+    phone: {
+        type: String, 
+        trim: true,
+        match: [/^\+?[0-9]+$/, 'Phone number must contain only digits and an optional + at the beginning']
+    },
     email: {
         type: String,
         required: true,

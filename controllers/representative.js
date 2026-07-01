@@ -21,13 +21,13 @@ module.exports.getindex = async (req, res) => {
 }
 
 
-module.exports.getEditClinic = async (req, res) => {
+module.exports.getClinic = async (req, res) => {
     const id = req.params.clinicId
     const clinic = await Clinic.findById(id).populate('doctor')
     if (!clinic) {
         return res.redirect('/representative')
     }
-    res.render('representative/editClinic', { id, clinic })
+    res.render('representative/Clinic', { id, clinic })
 }
 
 module.exports.putClinic = async (req, res) => {
@@ -46,8 +46,7 @@ module.exports.putClinic = async (req, res) => {
                 runValidators: true
             })
     }
-    res.redirect('/representative')
-
+    res.redirect('/representative/index')
 }
 
 module.exports.postClinic = async (req, res) => {

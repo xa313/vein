@@ -6,7 +6,11 @@ const Doctor = require('./doctor')
 
 const clinicSchema = new Schema({
     name: String,
-    phone: Number,
+    phone: {
+        type: String, 
+        trim: true,
+        match: [/^\+?[0-9]+$/, 'Phone number must contain only digits and an optional + at the beginning']
+    },
     createdBy: {
         type: Schema.Types.ObjectId,
         ref: 'Representative'
