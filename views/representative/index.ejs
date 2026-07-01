@@ -1,0 +1,104 @@
+<% layout('layouts/representative_boilerplate') %>
+    <style>
+        .page-header {
+            color: #2c3e50;
+            font-weight: 700;
+            margin-top: 40px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .sub-title {
+            color: #7f8c8d;
+            font-size: 1rem;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .clinic-card {
+            width: 100%;
+            border: none;
+            border-radius: 15px;
+            background: #ffffff;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow: hidden;
+        }
+
+        .clinic-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-accent-bar {
+            height: 4px;
+            background: linear-gradient(90deg, #3498db, #2ecc71);
+        }
+
+        .clinic-title {
+            color: #34495e;
+            font-weight: 600;
+            font-size: 1.25rem;
+            margin-bottom: 12px;
+        }
+
+        .clinic-location {
+            color: #95a5a6;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .edit-btn {
+            background-color: #f8f9fa;
+            color: #3498db !important;
+            border: 1px solid #e2e8f0;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: 600;
+            text-decoration: none !important;
+            display: inline-block;
+            transition: all 0.2s ease;
+            width: 100%;
+            text-align: center;
+        }
+
+        .edit-btn:hover {
+            background-color: #3498db;
+            color: white !important;
+            border-color: #3498db;
+        }
+    </style>
+
+    <div class="container mb-5">
+        <h1 class="page-header">Clinics You Added</h1>
+        <p class="sub-title">Here is a list of all the medical clinics you have registered in the system.</p>
+
+        <div class="row justify-content-center">
+            <% for( let clinic of clinics) { %>
+                <div class="col-md-4 d-flex justify-content-center mb-4">
+                    <div class="card clinic-card">
+                        <div class="card-accent-bar"></div>
+                        <div class="card-body pt-4">
+                            <h5 class="card-title clinic-title">
+                                <%= clinic.name %>
+                            </h5>
+                            <p class="card-text clinic-location">
+                                📍 <%= clinic.location %>
+                            </p>
+                        </div>
+
+                        <div class="card-body pt-0">
+                            <a href="/representative/<%= clinic._id %>/edit" class="edit-btn">
+                                Edit it?
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <% } %>
+        </div>
+    </div>

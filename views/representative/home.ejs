@@ -1,0 +1,86 @@
+<% layout('layouts/representative_boilerplate') %>
+
+    <style>
+        .hero-section {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            padding: 40px 20px;
+        }
+
+        .main-title {
+            color: #2c3e50;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .welcome-text {
+            color: #7f8c8d;
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+        }
+
+        .custom-btn-group {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .custom-btn {
+            padding: 12px 35px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            text-decoration: none !important;
+            display: inline-block;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-add {
+            background-color: #2ecc71;
+            color: white !important;
+            border: 2px solid #2ecc71;
+        }
+
+        .btn-add:hover {
+            background-color: #27ae60;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(46, 204, 113, 0.3);
+        }
+
+        .btn-view {
+            background-color: #3498db;
+            color: white !important;
+            border: 2px solid #3498db;
+        }
+
+        .btn-view:hover {
+            background-color: #2980b9;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(52, 152, 219, 0.3);
+        }
+    </style>
+
+    <div class="container my-5">
+        <div class="hero-section text-center">
+            <h1 class="main-title">Representative Interface</h1>
+            <p class="welcome-text">Manage your clinics and additions efficiently from one place.</p>
+
+            <div class="custom-btn-group">
+                <a href="/representative/clinic/new" class="custom-btn btn-add">
+                    Add A Clinic 🏥
+                </a>
+                <a href="/representative/index" class="custom-btn btn-view">
+                    My Clinics 📋
+                </a>
+            </div>
+        </div>
+    </div>

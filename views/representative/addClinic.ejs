@@ -1,0 +1,73 @@
+<% layout('layouts/representative_boilerplate') %>
+
+    <h1>Representative Clinic Add 🦷</h1>
+    <!-- enctype="multipart/form-data" -->
+    <form action="/clinic" method="post" novalidate class="needs-validation">
+
+        <div class="mb-3">
+            <label for="doctorName" class="form-label">doctor name</label>
+            <input type="text" class="form-control" id="doctorName" name="doctor[name]" required>
+            <div class="valid-feedback">Looks good!</div>
+        </div>
+
+        <div class="mb-3">
+            <label for="doctor Phone Number" class="form-label">doctor Phone Number</label>
+            <input type="number" class="form-control" id="doctor Phone Number" name="doctor[phone]" required>
+            <div class="valid-feedback">Looks good!</div>
+        </div>
+
+        <div class="mb-3">
+            <label for="Specialization" class="form-label">Doctor Specialization</label>
+            <input type="text" class="form-control" id="Specialization" name="doctor[specialization]" required>
+            <div class="valid-feedback">Looks good!</div>
+        </div>
+
+        <div class="mb-3">
+            <label for="location" class="form-label">clinic location *as title</label>
+            <input type="text" class="form-control" id="location" name="clinic[location]" required>
+            <div class="valid-feedback">Looks good!</div>
+        </div>
+
+        <div class="mb-3">
+            <label for="locationUrl" class="form-label">location *as URL from google map</label>
+            <input type="url" class="form-control" id="locationUrl" name="clinic[googleMap]" required>
+            <div class="valid-feedback">Looks good!</div>
+        </div>
+
+        <!-- <div>
+            <label for="img">doctor img:</label>
+            <input type="file" name="image" id="img">
+        </div> -->
+
+        <div class="mb-3">
+            <label for="clinic name" class="form-label">clinic name</label>
+            <textarea type="text" class="form-control" id="clinic name" name="clinic[name]" required></textarea>
+            <div class="valid-feedback">Looks good!</div>
+        </div>
+        <div class="mb-3">
+            <label for="clinic phone" class="form-label">clinic phone</label>
+            <textarea type="text" class="form-control" id="clinic phone" name="clinic[phone]" required></textarea>
+            <div class="valid-feedback">Looks good!</div>
+        </div>
+
+        <div class="mb-3">
+            <label for="description clinic" class="form-label">description clinic</label>
+            <textarea type="textarea" class="form-control" id="description clinic" name="clinic[description]"
+                required></textarea>
+            <div class="valid-feedback">Looks good!</div>
+        </div>
+        <!-- <div class="mb-3">
+            <label for="Doctor's secretary number" class="form-label">Doctor's secretary number</label>
+            <input type="number" class="form-control" id="Doctor's secretary number" name=doctor[secretaryNumber]" required>
+            <div class="valid-feedback">Looks good!</div>
+        </div>
+
+
+        <div class="mb-3">
+            <label for="Doctor's secretary name" class="form-label">Doctor's secretary name</label>
+            <input type="text" class="form-control" id="Doctor's secretary name" name=doctor[secretary_name]" required>
+            <div class="valid-feedback">Looks good!</div>
+        </div> -->
+
+        <button class="btn btn-outline-success  mb-2">Sub</button>
+    </form>

@@ -1,0 +1,11 @@
+<% layout('layouts/doctor_boilerplate') %>
+    <div class="container mt-5 mb-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6">
+
+                <%- include('../partials/patient_form', { title: 'Add New Patient' ,
+                    subtitle: 'Register a new patient to your clinic system' , submitUrl: '/doctor/patient' }) %>
+
+            </div>
+        </div>
+    </div>

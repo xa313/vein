@@ -1,0 +1,95 @@
+<div class="card registration-card shadow-lg border-0">
+    <div class="card-header registration-header text-white text-center py-4">
+        <h2 class="mb-1 fw-bold"><%= title %></h2>
+        <p class="mb-0 text-white-50"><%= subtitle %></p>
+    </div>
+
+    <div class="card-body p-4 p-md-5 bg-white">
+        <form action="<%= submitUrl %>" method="POST" class="needs-validation" novalidate>
+            
+            <div class="mb-4">
+                <label for="name" class="form-label fw-semibold text-secondary">Full Name</label>
+                <input type="text" class="form-control custom-input" id="name" name="patient[name]" placeholder="e.g., John Doe" required>
+            </div>
+
+            <div class="row mb-4">
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <label for="age" class="form-label fw-semibold text-secondary">Age</label>
+                    <input type="number" class="form-control custom-input" id="age" name="patient[age]" placeholder="e.g., 25" min="1" max="120" required>
+                </div>
+                <div class="col-md-8">
+                    <label for="phone" class="form-label fw-semibold text-secondary">Phone Number</label>
+                    <input type="number" class="form-control custom-input" id="phone" name="patient[phone]" placeholder="Enter your phone number" required>
+                </div>
+            </div>
+
+            <div class="mb-5">
+                <label for="gender" class="form-label fw-semibold text-secondary">Gender</label>
+                <select class="form-select custom-input" id="gender" name="patient[gender]" required>
+                    <option value="" disabled selected>Select your gender...</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="LGBTQ+">Other (LGBTQ+)</option>
+                </select>
+            </div>
+
+            <div class="d-grid mt-2">
+                <button type="submit" class="btn btn-primary btn-lg custom-btn shadow-sm">
+                    Create Account
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<style>
+    body {
+        background-color: #f8f9fa;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .registration-card {
+        border-radius: 1rem;
+        overflow: hidden;
+    }
+
+    .registration-header {
+        background: linear-gradient(135deg, #0d6efd 0%, #0a58ca 100%);
+        border-bottom: none;
+    }
+
+    .custom-input {
+        border-radius: 0.5rem;
+        padding: 0.75rem 1rem;
+        border: 1px solid #dee2e6;
+        background-color: #f8f9fa;
+        color: #495057;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .custom-input:focus {
+        background-color: #ffffff;
+        border-color: #86b7fe;
+        outline: 0;
+        box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.15);
+    }
+
+    .form-label {
+        font-size: 0.9rem;
+        letter-spacing: 0.3px;
+        margin-bottom: 0.5rem;
+    }
+
+    .custom-btn {
+        border-radius: 0.5rem;
+        padding: 0.8rem;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        transition: all 0.3s ease;
+    }
+
+    .custom-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 15px rgba(13, 110, 253, 0.2) !important;
+    }
+</style>
